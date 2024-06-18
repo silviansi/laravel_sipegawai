@@ -12,4 +12,7 @@ class ManajemenKaryawanController extends Controller
     public function create(){
         return view('pages.manajemen-karyawan.create');
     }
+    public function edit(){
+        return view('pages.manajemen-karyawan.edit');
+    }
 }
