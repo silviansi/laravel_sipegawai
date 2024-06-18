@@ -1,4 +1,4 @@
-@extends('layouts.base-auth')
+@extends('layouts.base')
 @section('title', 'Login')
 @section('content')
 
@@ -44,3 +44,7 @@
   </div>
 </div>
 @endsection
+
+@push('style')
+  <link rel="stylesheet" href="assets/css/auth.css">
+@endpush

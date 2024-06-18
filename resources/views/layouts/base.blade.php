@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css">
 
     <!-- DataTables CSS CDN -->
@@ -25,7 +26,10 @@
     <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="assets/css/style.css">
 
+    @stack('style')
+
     <body>
+        @auth
         <div class="wrapper">
             @include('layouts.sidebar')
             <div class="main">
@@ -33,6 +37,11 @@
                 @yield('content')
             </div>
         </div>
+        @endauth
+
+        @guest
+            @yield('content')
+        @endguest
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/script.js"></script>
