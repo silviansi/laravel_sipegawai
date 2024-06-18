@@ -12,4 +12,7 @@ class BagianController extends Controller
     public function create() {
         return view('pages.bagian.create');
     }
+    public function edit() {
+        return view('pages.bagian.edit');
+    }
 }

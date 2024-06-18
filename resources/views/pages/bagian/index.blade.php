@@ -1,4 +1,4 @@
-@extends('layouts.base-dashboard')
+@extends('layouts.base')
 @section('title', 'Bagian')
 @section('content')
 
@@ -22,40 +22,63 @@
              
             <tbody>
                 <tr>
-                    <td>Tiger Nixon</td>
+                    <td>1</td>
                     <td>System Architect</td>
-                    <td>System Architect</td>
+                    <td>
+                        <a href=""
+                            data-bs-toggle="modal" data-bs-target="#ModalEdit" class="btn btn-warning btn-sm">
+                            <i class="bi bi-pencil-fill"></i>
+                        </a>
+                        <button type="button" class="btn btn-danger btn-sm">
+                            <i class="bi bi-trash-fill"></i>
+                        </button>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Garrett Winters</td>
+                    <td>2</td>
                     <td>Accountant</td>
-                    <td>System Architect</td>
+                    <td>
+                        <a href=""
+                            data-bs-toggle="modal" data-bs-target="#ModalEdit" class="btn btn-warning btn-sm">
+                            <i class="bi bi-pencil-fill"></i>
+                        </a>
+                        <button type="button" class="btn btn-danger btn-sm">
+                            <i class="bi bi-trash-fill"></i>
+                        </button>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Ashton Cox</td>
+                    <td>3</td>
                     <td>Junior Technical Author</td>
-                    <td>System Architect</td>
+                    <td>
+                        <a href=""
+                            data-bs-toggle="modal" data-bs-target="#ModalEdit" class="btn btn-warning btn-sm">
+                            <i class="bi bi-pencil-fill"></i>
+                        </a>
+                        <button type="button" class="btn btn-danger btn-sm">
+                            <i class="bi bi-trash-fill"></i>
+                        </button>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Cedric Kelly</td>
+                    <td>4</td>
                     <td>Senior Javascript Developer</td>
-                    <td>System Architect</td>
-                </tr>
-                <tr>
-                    <td>Airi Satou</td>
-                    <td>Accountant</td>
-                    <td>System Architect</td>
-                </tr>
-                <tr>
-                    <td>Brielle Williamson</td>
-                    <td>Integration Specialist</td>
-                    <td>System Architect</td>
+                    <td>
+                        <a href=""
+                            data-bs-toggle="modal" data-bs-target="#ModalEdit" class="btn btn-warning btn-sm">
+                            <i class="bi bi-pencil-fill"></i>
+                        </a>
+                        <button type="button" class="btn btn-danger btn-sm">
+                            <i class="bi bi-trash-fill"></i>
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         </table>
     </div>
 </div>
 
+@include('pages.bagian.edit')
 @include('pages.bagian.create')
 @endsection
 
@@ -63,8 +86,11 @@
     <script>
         $(document).ready(function() {
             $('#table-bagian').DataTable( {
-                responsive: true
-            } );
+                responsive: true,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Indonesian.json"
+                }
+            });
         });
     </script>
 @endpush
