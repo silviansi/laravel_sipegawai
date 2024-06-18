@@ -17,7 +17,7 @@
               <div class="dropdown-menu dropdown-menu-end">
                   <a href="#" class="dropdown-item">Profile</a>
                   <a href="#" class="dropdown-item">Setting</a>
-                  <a href="#" class="dropdown-item">Logout</a>
+                  <a href="logout" class="dropdown-item">Logout</a>
               </div>
           </li>
       </ul>
