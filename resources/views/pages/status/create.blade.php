@@ -7,16 +7,17 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form class="row g-3">
-                <div class="col-md-12">
-                  <label for="nama_status" class="form-label">Nama Status</label>
-                  <input type="text" class="form-control" id="nama_status" name="nama_status">
-                </div>
+          <form action="{{ route('status.store') }}" method="POST" class="row g-3" id="tambahStatus">
+            @csrf
+              <div class="col-md-12">
+                <label for="nama_status" class="form-label">Nama Status</label>
+                <input type="text" class="form-control" id="nama_status" name="nama_status">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                <button type="submit" class="btn btn-primary">Simpan</button>
+              </div>
             </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-          <button type="button" class="btn btn-primary">Simpan</button>
         </div>
         </div>
     </div>
