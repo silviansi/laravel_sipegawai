@@ -21,58 +21,20 @@
             </thead>
              
             <tbody>
+                @foreach($bagians as $bagian)
                 <tr>
-                    <td>1</td>
-                    <td>System Architect</td>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $bagian->nama_bagian }}</td>
                     <td>
-                        <a href=""
-                            data-bs-toggle="modal" data-bs-target="#ModalEdit" class="btn btn-warning btn-sm">
+                        <a href="{{ route('bagian.edit', $bagian->id) }}"
+                            class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#ModalEdit{{ $bagian->id }}">
                             <i class="bi bi-pencil-fill"></i>
                         </a>
                         <button type="button" class="btn btn-danger btn-sm">
                             <i class="bi bi-trash-fill"></i>
                         </button>
-                    </td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Accountant</td>
-                    <td>
-                        <a href=""
-                            data-bs-toggle="modal" data-bs-target="#ModalEdit" class="btn btn-warning btn-sm">
-                            <i class="bi bi-pencil-fill"></i>
-                        </a>
-                        <button type="button" class="btn btn-danger btn-sm">
-                            <i class="bi bi-trash-fill"></i>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Junior Technical Author</td>
-                    <td>
-                        <a href=""
-                            data-bs-toggle="modal" data-bs-target="#ModalEdit" class="btn btn-warning btn-sm">
-                            <i class="bi bi-pencil-fill"></i>
-                        </a>
-                        <button type="button" class="btn btn-danger btn-sm">
-                            <i class="bi bi-trash-fill"></i>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Senior Javascript Developer</td>
-                    <td>
-                        <a href=""
-                            data-bs-toggle="modal" data-bs-target="#ModalEdit" class="btn btn-warning btn-sm">
-                            <i class="bi bi-pencil-fill"></i>
-                        </a>
-                        <button type="button" class="btn btn-danger btn-sm">
-                            <i class="bi bi-trash-fill"></i>
-                        </button>
-                    </td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
@@ -84,13 +46,33 @@
 
 @push('script')
     <script>
+        // DataTable Versi Indonesia
         $(document).ready(function() {
             $('#table-bagian').DataTable( {
                 responsive: true,
                 "language": {
-                    "url": "//cdn.datatables.net/plug-ins/1.10.25/i18n/Indonesian.json"
+                    "url": "assets/vendor/Indonesia.json"
                 }
             });
         });
     </script>
+
+@if (session('success'))
+<script>
+    Swal.fire({
+        title: "Sukses!",
+        text: "{{ session('success') }}",
+        icon: "success"
+    })
+</script>
+@endif
+@if (session('error'))
+<script>
+    Swal.fire({
+        title: "Error!",
+        text: "{{ session('error') }}",
+        icon: "error",
+    })
+</script>
+@endif
 @endpush
