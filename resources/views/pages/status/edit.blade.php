@@ -7,17 +7,19 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form action="{{ route('status.update', $status->id) }}" class="row g-3">
-                <div class="col-md-12">
-                  <label for="nama_status" class="form-label">Nama Status</label>
-                  <input type="text" class="form-control" id="nama_status" name="nama_status" value={{ $status->nama_status }}>
-                </div>
+          <form action="{{ route('status.update', $status->id) }}" method="POST" class="row g-3">
+            @csrf
+            @method('PUT')
+            <div class="col-md-12">
+              <label for="nama_status" class="form-label">Nama Status</label>
+              <input type="text" class="form-control" id="nama_status" name="nama_status" value={{ $status->nama_status }}>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+              <button type="submit" class="btn btn-primary">Simpan</button>
+            </div>
             </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-          <button type="submit" class="btn btn-primary">Simpan</button>
-        </div>
+          </div>
         </div>
     </div>
 </div>

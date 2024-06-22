@@ -29,11 +29,7 @@ class StatusController extends Controller
         return view('pages.status.edit');
     }
     public function update(Request $request, $id){
-        $status = Status::find($id);
-
-        if (!$status) {
-            return redirect()->route('status.index')->with('error', 'Data status tidak ditemukan');
-        }
+        $status = Status::findOrFail($id);
 
         $request->validate([
             'nama_status' => 'required|string|max:255',

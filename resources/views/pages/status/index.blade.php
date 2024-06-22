@@ -26,7 +26,7 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $status->nama_status }}</td>
                     <td>
-                        <a href=""
+                        <a href="{{ route('status.edit', $status->id) }}" 
                             data-bs-toggle="modal" data-bs-target="#ModalEdit{{ $status->id }}" class="btn btn-warning btn-sm">
                             <i class="bi bi-pencil-fill"></i>
                         </a>
