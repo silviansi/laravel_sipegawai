@@ -4,19 +4,11 @@
   </button>
   <div class="navbar-collapse navbar">
       <ul class="navbar-nav">
-        <li class="nav-item">
-            <a href="#" class="theme-toggle">
-                <i class="fa-regular fa-moon"></i>
-                <i class="fa-regular fa-sun"></i>
-              </a>
-        </li> 
         <li class="nav-item dropdown">
               <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
                   <img src="assets/img/avatars/1.png" class="avatar img-fluid rounded" alt="">
               </a>
               <div class="dropdown-menu dropdown-menu-end">
-                  <a href="#" class="dropdown-item">Profile</a>
-                  <a href="#" class="dropdown-item">Setting</a>
                   <a href="logout" class="dropdown-item">Logout</a>
               </div>
           </li>
