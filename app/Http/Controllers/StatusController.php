@@ -44,4 +44,10 @@ class StatusController extends Controller
 
         return redirect()->route('status.index')->with('success', 'Data status berhasil diupdate');
     }
+    public function destroy($id){
+        $status = Status::findOrFail($id);
+
+        $status->delete();
+        return response()->json(['message' => 'Data Status berhasil dihapus']);
+    }
 }

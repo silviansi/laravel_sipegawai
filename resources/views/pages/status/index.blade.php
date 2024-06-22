@@ -22,7 +22,7 @@
              
             <tbody>
                 @foreach ($statuses as $status)
-                <tr>
+                <tr id="row-{{ $status->id }}">
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $status->nama_status }}</td>
                     <td>
@@ -30,18 +30,18 @@
                             data-bs-toggle="modal" data-bs-target="#ModalEdit{{ $status->id }}" class="btn btn-warning btn-sm">
                             <i class="bi bi-pencil-fill"></i>
                         </a>
-                        <button type="button" class="btn btn-danger btn-sm">
+                        <button type="button" class="btn btn-danger btn-sm deleteBtn" data-id="{{ $status->id }}">
                             <i class="bi bi-trash-fill"></i>
                         </button>
                     </td>
                 </tr>
+                @include('pages.status.edit', ['status' => $status])
                 @endforeach
             </tbody>
         </table>
     </div>
 </div>
 
-@include('pages.status.edit')
 @include('pages.status.create')
 @endsection
 
@@ -55,6 +55,51 @@
                     "url": "assets/vendor/Indonesia.json"
                 }
             } );
+        });
+
+        $('.deleteBtn').click(function(){
+            var id = $(this).data('id');
+            Swal.fire({
+                title: 'Apakah Anda Yakin?',
+                text: "Data yang dihapus tidak dapat dikembalikan!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Ya, Hapus!',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: "DELETE",
+                        url: "/status/" + id,
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                        },
+                        success: function (response) {
+                            Swal.fire({
+                                title: "Sukses!",
+                                text: response.message,
+                                icon: "success",
+                            }).then((result) => {
+                                $('#row-' + id).remove();
+                            });
+                        },
+                        error : function(error) {
+                            Swal.fire({
+                                title: "Error!",
+                                text: "Data gagal dihapus.",
+                                icon: "error"
+                            });
+                        }
+                    });
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    Swal.fire({
+                        title: "Batal",
+                        text: "Data tidak jadi dihapus.",
+                        icon: "info"
+                    });
+                }
+            });
         });
     </script>
 
