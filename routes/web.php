@@ -33,9 +33,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // Route untuk manajemen karyawan
-    Route::get('/manajemen-karyawan', [ManajemenKaryawanController::class, 'index']);
-    Route::get('/manajemen-karyawan/create', [ManajemenKaryawanController::class, 'create']);
-    Route::get('/manajemen-karyawan/edit', [ManajemenKaryawanController::class, 'edit']);
+    Route::get('/manajemen-karyawan', [ManajemenKaryawanController::class, 'index'])->name('manajemen-karyawan.index');
+    Route::get('/manajemen-karyawan/create', [ManajemenKaryawanController::class, 'create'])->name('manajemen-karyawan.create');
+    Route::post('/manajemen-karyawan/store', [ManajemenKaryawanController::class, 'store'])->name('manajemen-karyawan.store');
+    Route::get('/manajemen-karyawan/detail', [ManajemenKaryawanController::class, 'detail'])->name('manajemen-karyawan.detail');
+    Route::get('/manajemen-karyawan/{id}/edit', [ManajemenKaryawanController::class, 'edit'])->name('manajemen-karyawan.edit');
+    Route::put('/manajemen-karyawan/{id}', [ManajemenKaryawanController::class, 'update'])->name('manajemen-karyawan.update');
+    Route::delete('/manajemen-karyawan/{id}', [ManajemenKaryawanController::class, 'destroy'])->name('manajemen-karyawan.destroy');
 
     // Route untuk bagian
     Route::get('/bagian', [BagianController::class, 'index'])->name('bagian.index');
@@ -47,7 +51,7 @@ Route::middleware('auth')->group(function () {
 
     // Route untuk jabatan
     Route::get('/jabatan', [JabatanController::class, 'index'])->name('jabatan.index');
-    Route::get('/jabatan/create', [JabatanController::class, 'create']);
+    Route::get('/jabatan/create', [JabatanController::class, 'create'])->name('jabatan.create');
     Route::post('/jabatan/store', [JabatanController::class, 'store'])->name('jabatan.store');
     Route::get('/jabatan/{id}/edit', [JabatanController::class, 'edit'])->name('jabatan.edit');
     Route::put('/jabatan/{id}', [JabatanController::class, 'update'])->name('jabatan.update');
