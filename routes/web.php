@@ -29,28 +29,37 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    // Route for dashboard
+    // Route untuk dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    // Route for manajemen karyawan
+    // Route untuk manajemen karyawan
     Route::get('/manajemen-karyawan', [ManajemenKaryawanController::class, 'index']);
     Route::get('/manajemen-karyawan/create', [ManajemenKaryawanController::class, 'create']);
     Route::get('/manajemen-karyawan/edit', [ManajemenKaryawanController::class, 'edit']);
 
-    // Route for bagian
-    Route::get('/bagian', [BagianController::class, 'index']);
+    // Route untuk bagian
+    Route::get('/bagian', [BagianController::class, 'index'])->name('bagian.index');
     Route::get('/bagian/create', [BagianController::class, 'create']);
-    Route::get('/bagian/edit', [BagianController::class, 'edit']);
+    Route::post('/bagian/store', [BagianController::class, 'store'])->name('bagian.store');
+    Route::get('/bagian/{id}/edit', [BagianController::class, 'edit'])->name('bagian.edit');
+    Route::put('/bagian/{id}', [BagianController::class, 'update'])->name('bagian.update');
+    Route::delete('/bagian/{id}', [BagianController::class, 'destroy'])->name('bagian.destroy');
 
-    // Route for jabatan
-    Route::get('/jabatan', [JabatanController::class, 'index']);
+    // Route untuk jabatan
+    Route::get('/jabatan', [JabatanController::class, 'index'])->name('jabatan.index');
     Route::get('/jabatan/create', [JabatanController::class, 'create']);
-    Route::get('/jabatan/edit', [JabatanController::class, 'edit']);
+    Route::post('/jabatan/store', [JabatanController::class, 'store'])->name('jabatan.store');
+    Route::get('/jabatan/{id}/edit', [JabatanController::class, 'edit'])->name('jabatan.edit');
+    Route::put('/jabatan/{id}', [JabatanController::class, 'update'])->name('jabatan.update');
+    Route::delete('/jabatan/{id}', [JabatanController::class, 'destroy'])->name('jabatan.destroy');
 
-    // Route for status
-    Route::get('/status', [StatusController::class, 'index']);
+    // Route untuk status
+    Route::get('/status', [StatusController::class, 'index'])->name('status.index');
     Route::get('/status/create', [StatusController::class, 'create']);
-    Route::get('/status/edit', [StatusController::class, 'edit']);
+    Route::post('/status/store', [StatusController::class, 'store'])->name('status.store');
+    Route::get('/status/{id}/edit', [StatusController::class, 'edit'])->name('status.edit');
+    Route::put('/status/{id}', [StatusController::class, 'update'])->name('status.update');
+    Route::delete('/status/{id}', [StatusController::class, 'destroy'])->name('status.destroy');
 
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
