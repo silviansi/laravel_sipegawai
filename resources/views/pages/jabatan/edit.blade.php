@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="ModalEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="ModalEdit{{ $jabatan->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -7,17 +7,19 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form class="row g-3">
-                <div class="col-md-12">
-                  <label for="nama_jabatan" class="form-label">Nama Jabatan</label>
-                    <input type="text" class="form-control" id="nama_jabatan" name="nama_jabatan">
-                </div>
+          <form action="{{ route('jabatan.update', $jabatan->id) }}" method="POST" class="row g-3">
+            @csrf
+            @method('PUT')
+            <div class="col-md-12">
+              <label for="nama_jabatan" class="form-label">Nama Jabatan</label>
+              <input type="text" class="form-control" id="nama_jabatan" name="nama_jabatan" value="{{ $jabatan->nama_jabatan }}">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+              <button type="submit" class="btn btn-primary">Simpan</button>
+            </div>
             </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-          <button type="button" class="btn btn-primary">Simpan</button>
-        </div>
+          </div>
         </div>
     </div>
 </div>
