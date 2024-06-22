@@ -5,71 +5,155 @@
 <main class="content px-3 py-2">
   <div class="container-fluid">
       <div class="mb-3">
-          <h4>Selamat Datang di SIPegawai Dashboard</h4>
+          <h4 class="fw-bold">Selamat Datang di SIPegawai Dashboard</h4>
       </div>
       <div class="row">
-          <div class="col-12 col-md-4 d-flex">
-              <div class="card flex-fill border-0 illustration">
-                  <div class="card-body p-0 d-flex flex-fill">
-                      <div class="row g-0 w-100">
-                          <div class="col-6">
-                              <div class="p-3 m-1">
-                                  <h4>Welcome Back, Admin</h4>
-                                  <p class="mb-0">Admin Dashboard, CodzSword</p>
-                              </div>
-                          </div>
-                          <div class="col-6 align-self-end text-end">
-                              <img src="image/customer-support.jpg" class="img-fluid illustration-img"
-                                  alt="">
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="col-12 col-md-4 d-flex">
-              <div class="card flex-fill border-0">
-                  <div class="card-body py-4">
-                      <div class="d-flex align-items-start">
-                          <div class="flex-grow-1">
-                              <h4 class="mb-2">
-                                  $ 78.00
-                              </h4>
-                              <p class="mb-2">
-                                  Total Earnings
-                              </p>
-                              <div class="mb-0">
-                                  <span class="badge text-success me-2">
-                                      +9.0%
-                                  </span>
-                                  <span class="text-muted">
-                                      Since Last Month
-                                  </span>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="col-12 col-md-4 d-flex">
-            <div class="card flex-fill border-0 illustration">
-                <div class="card-body p-0 d-flex flex-fill">
-                    <div class="row g-0 w-100">
-                        <div class="col-6">
-                            <div class="p-3 m-1">
-                                <h4>Welcome Back, Admin</h4>
-                                <p class="mb-0">Admin Dashboard, CodzSword</p>
-                            </div>
-                        </div>
-                        <div class="col-6 align-self-end text-end">
-                            <img src="image/customer-support.jpg" class="img-fluid illustration-img"
-                                alt="">
-                        </div>
-                    </div>
+        <div class="col-12 col-md-4 d-flex">
+            <div class="card flex-fill border-0 shadow-sm illustration">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Total Semua Pegawai</h5>
+                  <h2 class="display-4">{{ $totalPegawai }}</h2>
                 </div>
             </div>
         </div>
-      </div>
-      <!-- Table Element -->
+          <div class="col-12 col-md-4 d-flex">
+              <div class="card flex-fill border-0">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Total Pegawai Aktif</h5>
+                    <h2 class="display-4">{{ $totalPegawaiAktif }}</h2>
+                </div>
+              </div>
+          </div>
+          <div class="col-12 col-md-4 d-flex">
+            <div class="card flex-fill border-0 shadow-sm illustration">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Total Pegawai Cuti</h5>
+                  <h2 class="display-4">{{ $totalPegawaiCuti }}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <div class="card">
+                <div class="card-header border-0">
+                    <h5 class="card-title">Jumlah Pegawai Setiap Bagian</h5>
+                </div>
+                <div class="card-body">
+                    <canvas id="bagianPegawai"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="card">
+                <div class="card-header border-0">
+                    <h5 class="card-title">Jumlah Pegawai Setiap Status</h5>
+                </div>
+                <div class="card-body">
+                    <canvas id="statusPegawai"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 </main>
 @endsection
+
+@push('script')
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Grafik Donat untuk Jumlah Pegawai Setiap Bagian
+    const ctxBagian = document.getElementById('bagianPegawai').getContext('2d');
+    const bagianData = {
+        labels: @json($bagians->values()), // Nama bagian
+        datasets: [{
+            label: 'Jumlah Pegawai Setiap Bagian',
+            data: @json($pegawaiPerBagian->values()), // Jumlah pegawai untuk setiap bagian
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.6)',
+                'rgba(54, 162, 235, 0.6)',
+                'rgba(255, 205, 86, 0.6)',
+                'rgba(75, 192, 192, 0.6)',
+                'rgba(153, 102, 255, 0.6)',
+                'rgba(255, 159, 64, 0.6)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 205, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    };
+
+    const bagianChart = new Chart(ctxBagian, {
+        type: 'doughnut',
+        data: bagianData,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return tooltipItem.label + ': ' + tooltipItem.raw.toLocaleString();
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    // Grafik Pie untuk Jumlah Pegawai Setiap Status
+    const ctxStatus = document.getElementById('statusPegawai').getContext('2d');
+    const statusData = {
+        labels: @json($statuses->values()), // Nama status
+        datasets: [{
+            label: 'Jumlah Pegawai Setiap Status',
+            data: @json($pegawaiPerStatus->values()), // Jumlah pegawai untuk setiap status
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.6)',
+                'rgba(54, 162, 235, 0.6)',
+                'rgba(255, 205, 86, 0.6)',
+                'rgba(75, 192, 192, 0.6)',
+                'rgba(153, 102, 255, 0.6)',
+                'rgba(255, 159, 64, 0.6)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 205, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    };
+
+    const statusChart = new Chart(ctxStatus, {
+        type: 'pie',
+        data: statusData,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return tooltipItem.label + ': ' + tooltipItem.raw.toLocaleString();
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>
+@endpush
