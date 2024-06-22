@@ -56,54 +56,52 @@
             });
         });
 
-        $(document).ready(function() {
-            $('.deleteBtn').click(function(){
-                var id = $(this).data('id');
-                Swal.fire({
-                    title: 'Apakah Anda Yakin?',
-                    text: "Data yang dihapus tidak dapat dikembalikan!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#d33',
-                    cancelButtonColor: '#3085d6',
-                    confirmButtonText: 'Ya, hapus!',
-                    cancelButtonText: 'Batal'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        $.ajax({
-                            type: "DELETE",
-                            url: "/bagian/" + id,
-                            data: {
-                                "_token": "{{ csrf_token() }}"
-                            },
-                            success: function(response) {
-                                Swal.fire({
-                                    title: 'Sukses!',
-                                    text: 'Data berhasil dihapus.',
-                                    icon: 'success'
-                                }).then((result) => {
-                                $('#row-' + id).remove();
-                                });
-                            },
-                            error : function(error) {
-                                Swal.fire({
-                                    title: 'Error!',
-                                    text: 'Data gagal dihapus.',
-                                    icon: 'error'
-                                })
-                            }
-                        })
-                    } else if (result.dismiss === Swal.DismissReason.cancel) {
-                        Swal.fire({
-                            title: 'Batal',
-                            text: 'Data tidak jadi dihapus.',
-                            icon: 'info'
-                        })
-                    }
+        $('.deleteBtn').click(function(){
+            var id = $(this).data('id');
+            Swal.fire({
+                title: 'Apakah Anda Yakin?',
+                text: "Data yang dihapus tidak dapat dikembalikan!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: "DELETE",
+                        url: "/bagian/" + id,
+                        data: {
+                            "_token": "{{ csrf_token() }}"
+                        },
+                        success: function(response) {
+                            Swal.fire({
+                                title: 'Sukses!',
+                                text: 'Data berhasil dihapus.',
+                                icon: 'success'
+                            }).then((result) => {
+                            $('#row-' + id).remove();
+                            });
+                        },
+                        error : function(error) {
+                            Swal.fire({
+                                title: 'Error!',
+                                text: 'Data gagal dihapus.',
+                                icon: 'error'
+                            })
+                        }
+                    })
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    Swal.fire({
+                        title: 'Batal',
+                        text: 'Data tidak jadi dihapus.',
+                        icon: 'info'
+                    })
                 }
-            )
-            })
-        })
+            }
+        )
+    })
     </script>
 
 @if (session('success'))
