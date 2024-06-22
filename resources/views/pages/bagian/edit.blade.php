@@ -1,4 +1,3 @@
-@foreach($bagians as $bagian)
 <!-- Modal -->
 <div class="modal fade" id="ModalEdit{{ $bagian->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -24,4 +23,3 @@
         </div>
     </div>
 </div>
-@endforeach

@@ -44,4 +44,10 @@ class BagianController extends Controller
 
         return redirect()->route('bagian.index')->with('success', 'Data bagian berhasil diupdate');
         }
+        public function destroy($id) {
+            $bagian = Bagian::findOrFail($id);
+
+            $bagian->delete();
+            return response()->json(['message' => 'Data Bagian berhasil dihapus']);
+        }
 }
