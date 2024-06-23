@@ -16,6 +16,7 @@ class PegawaiSeeder extends Seeder
         $pegawai = [
             [
                 'nama' => 'Saiful Gunarto',
+                'nip' => '235635',
                 'no_telp' => '081883736342',
                 'email' => 'saiful@gmail.com',
                 'tgl_lahir' => '1990-01-01',
@@ -28,6 +29,7 @@ class PegawaiSeeder extends Seeder
             ],
             [
                 'nama' => 'Musofa Suwarno',
+                'nip' => '635282',
                 'no_telp' => '081736466736',
                 'email' => 'mustofa@gmail.com',
                 'tgl_lahir' => '1991-02-02',
@@ -40,6 +42,7 @@ class PegawaiSeeder extends Seeder
             ],
             [
                 'nama' => 'Eko Ardiansyah',
+                'nip' => '353877',
                 'no_telp' => '082655837465',
                 'email' => 'eko@gmail.com',
                 'tgl_lahir' => '1991-03-03',
@@ -52,6 +55,7 @@ class PegawaiSeeder extends Seeder
             ],
             [
                 'nama' => 'Wirda Suartini',
+                'nip' => '743988',
                 'no_telp' => '083745817623',
                 'email' => 'wirda@gmail.com',
                 'tgl_lahir' => '1992-04-04',
@@ -64,6 +68,7 @@ class PegawaiSeeder extends Seeder
             ],
             [
                 'nama' => 'Irma Hariani',
+                'nip' => '282367',
                 'no_telp' => '081536226736',
                 'email' => 'irma@gmail.com',
                 'tgl_lahir' => '1992-05-05',
