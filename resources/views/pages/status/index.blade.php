@@ -11,6 +11,15 @@
 
 <div class="card flex-fill border-0 mx-5 mt-2">
     <div class="card-body py-4">
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
         <table id="table-status" class="display cell-border" cellspacing="0" width="100%">
             <thead>
                 <tr>
