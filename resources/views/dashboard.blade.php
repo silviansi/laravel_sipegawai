@@ -62,46 +62,53 @@
 @push('script')
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
+    function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+    }
+
+    function generateColors(count) {
+        const backgroundColors = [];
+        const borderColors = [];
+        for (let i = 0; i < count; i++) {
+            const bgColor = getRandomColor();
+            backgroundColors.push(bgColor + 'B3'); // 70% opacity
+            borderColors.push(bgColor);
+        }
+        return { backgroundColors, borderColors };
+    }
     // Grafik Donat untuk Jumlah Pegawai Setiap Bagian
     const ctxBagian = document.getElementById('bagianPegawai').getContext('2d');
+    const bagianColors = generateColors(@json($bagians->count()));
+
     const bagianData = {
         labels: @json($bagians->values()), // Nama bagian
         datasets: [{
             label: 'Jumlah Pegawai Setiap Bagian',
             data: @json($pegawaiPerBagian->values()), // Jumlah pegawai untuk setiap bagian
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.6)',
-                'rgba(54, 162, 235, 0.6)',
-                'rgba(255, 205, 86, 0.6)',
-                'rgba(75, 192, 192, 0.6)',
-                'rgba(153, 102, 255, 0.6)',
-                'rgba(255, 159, 64, 0.6)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 205, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
+            backgroundColor: bagianColors.backgroundColors,
+            borderColor: bagianColors.borderColors,
             borderWidth: 1
         }]
     };
 
     const bagianChart = new Chart(ctxBagian, {
-        type: 'doughnut',
-        data: bagianData,
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'top',
-                },
-                tooltip: {
-                    callbacks: {
-                        label: function(tooltipItem) {
-                            return tooltipItem.label + ': ' + tooltipItem.raw.toLocaleString();
+    type: 'doughnut',
+    data: bagianData,
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            tooltip: {
+                callbacks: {
+                    label: function(tooltipItem) {
+                        return tooltipItem.label + ': ' + tooltipItem.raw.toLocaleString();
                         }
                     }
                 }
@@ -111,49 +118,37 @@
 
     // Grafik Pie untuk Jumlah Pegawai Setiap Status
     const ctxStatus = document.getElementById('statusPegawai').getContext('2d');
+    const statusColors = generateColors(@json($statuses->count()));
+
     const statusData = {
         labels: @json($statuses->values()), // Nama status
         datasets: [{
             label: 'Jumlah Pegawai Setiap Status',
             data: @json($pegawaiPerStatus->values()), // Jumlah pegawai untuk setiap status
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.6)',
-                'rgba(54, 162, 235, 0.6)',
-                'rgba(255, 205, 86, 0.6)',
-                'rgba(75, 192, 192, 0.6)',
-                'rgba(153, 102, 255, 0.6)',
-                'rgba(255, 159, 64, 0.6)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 205, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
+            backgroundColor: statusColors.backgroundColors,
+            borderColor: statusColors.borderColors,
             borderWidth: 1
         }]
     };
 
     const statusChart = new Chart(ctxStatus, {
-        type: 'pie',
-        data: statusData,
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'top',
-                },
-                tooltip: {
-                    callbacks: {
-                        label: function(tooltipItem) {
-                            return tooltipItem.label + ': ' + tooltipItem.raw.toLocaleString();
-                        }
+    type: 'pie',
+    data: statusData,
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            tooltip: {
+                callbacks: {
+                    label: function(tooltipItem) {
+                        return tooltipItem.label + ': ' + tooltipItem.raw.toLocaleString();
                     }
                 }
             }
         }
-    });
+    }
+});
 </script>
 @endpush
