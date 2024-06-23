@@ -14,7 +14,6 @@ class JabatanSeeder extends Seeder
     public function run(): void
     {
         $jabatans = [
-            'Direktur',
             'Manajer',
             'Supervisor',
             'Kepala Bagian',
