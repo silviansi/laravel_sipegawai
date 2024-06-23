@@ -5,6 +5,7 @@ use App\Http\Controllers\BagianController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\ManajemenKaryawanController;
+use App\Http\Controllers\ManajemenPegawaiController;
 use App\Http\Controllers\StatusController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::middleware('guest')->group(function () {
@@ -33,13 +34,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // Route untuk manajemen karyawan
-    Route::get('/manajemen-karyawan', [ManajemenKaryawanController::class, 'index'])->name('manajemen-karyawan.index');
-    Route::get('/manajemen-karyawan/create', [ManajemenKaryawanController::class, 'create'])->name('manajemen-karyawan.create');
-    Route::post('/manajemen-karyawan/store', [ManajemenKaryawanController::class, 'store'])->name('manajemen-karyawan.store');
-    Route::get('/manajemen-karyawan/detail', [ManajemenKaryawanController::class, 'detail'])->name('manajemen-karyawan.detail');
-    Route::get('/manajemen-karyawan/{id}/edit', [ManajemenKaryawanController::class, 'edit'])->name('manajemen-karyawan.edit');
-    Route::put('/manajemen-karyawan/{id}', [ManajemenKaryawanController::class, 'update'])->name('manajemen-karyawan.update');
-    Route::delete('/manajemen-karyawan/{id}', [ManajemenKaryawanController::class, 'destroy'])->name('manajemen-karyawan.destroy');
+    Route::get('/manajemen-pegawai', [ManajemenPegawaiController::class, 'index'])->name('pegawai.index');
+    Route::get('/manajemen-pegawai/create', [ManajemenPegawaiController::class, 'create'])->name('pegawai.create');
+    Route::post('/manajemen-pegawai/store', [ManajemenPegawaiController::class, 'store'])->name('pegawai.store');
+    Route::get('/manajemen-pegawai/detail', [ManajemenPegawaiController::class, 'detail'])->name('pegawai.detail');
+    Route::get('/manajemen-pegawai/{id}/edit', [ManajemenPegawaiController::class, 'edit'])->name('pegawai.edit');
+    Route::put('/manajemen-pegawai/{id}', [ManajemenPegawaiController::class, 'update'])->name('pegawai.update');
+    Route::delete('/manajemen-pegawai/{id}', [ManajemenPegawaiController::class, 'destroy'])->name('pegawai.destroy');
 
     // Route untuk bagian
     Route::get('/bagian', [BagianController::class, 'index'])->name('bagian.index');
