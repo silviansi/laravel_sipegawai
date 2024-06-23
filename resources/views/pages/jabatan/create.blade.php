@@ -11,7 +11,7 @@
             @csrf
             <div class="col-md-12">
               <label for="nama_jabatan" class="form-label">Nama Jabatan</label>
-              <input type="text" class="form-control" id="nama_jabatan" name="nama_jabatan">
+              <input type="text" class="form-control" id="nama_jabatan" name="nama_jabatan" required>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>

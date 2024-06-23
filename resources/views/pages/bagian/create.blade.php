@@ -11,7 +11,7 @@
               @csrf
               <div class="col-md-12">
                 <label for="nama_bagian" class="form-label">Nama Bagian</label>
-                <input type="text" class="form-control" id="nama_bagian" name="nama_bagian">
+                <input type="text" class="form-control" id="nama_bagian" name="nama_bagian" required>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

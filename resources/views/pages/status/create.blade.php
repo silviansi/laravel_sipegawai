@@ -11,7 +11,7 @@
             @csrf
               <div class="col-md-12">
                 <label for="nama_status" class="form-label">Nama Status</label>
-                <input type="text" class="form-control" id="nama_status" name="nama_status">
+                <input type="text" class="form-control" id="nama_status" name="nama_status" required>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
