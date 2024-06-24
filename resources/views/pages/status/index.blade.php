@@ -5,7 +5,7 @@
 <!-- Button trigger modal -->
 <div class="col-md-3 mx-5 mt-4 mb-2">
     <a href=""
-        data-bs-toggle="modal" data-bs-target="#ModalTambah" class="btn btn-success btn-md">+ Tambah Data Status
+        data-bs-toggle="modal" data-bs-target="#ModalTambah" class="btn btn-success btn-md">+ Tambah Status Pegawai
     </a>
 </div>
 
@@ -24,17 +24,17 @@
             <thead>
                 <tr>
                     <th>No.</th>
-                    <th>Nama Status</th>
-                    <th>Aksi</th>
+                    <th class="text-center">Status Pegawai</th>
+                    <th class="text-center">Aksi</th>
                 </tr>
             </thead>
              
             <tbody>
                 @foreach ($statuses as $status)
                 <tr id="row-{{ $status->id }}">
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $status->nama_status }}</td>
-                    <td>
+                    <td class="text-center">{{ $loop->iteration }}</td>
+                    <td class="text-center">{{ $status->nama_status }}</td>
+                    <td class="text-center">
                         <a href="{{ route('status.edit', $status->id) }}" 
                             data-bs-toggle="modal" data-bs-target="#ModalEdit{{ $status->id }}" class="btn btn-warning btn-sm">
                             <i class="bi bi-pencil-fill"></i>
@@ -59,6 +59,11 @@
         // DataTable Versi Indonesia
         $(document).ready(function() {
             $('#table-status').DataTable( {
+                "columnDefs": [
+                    { "width": "5%", "targets": 0 },  
+                    { "width": "45%", "targets": 1 },  
+                    { "width": "45%", "targets": 2 }   
+                ],
                 responsive: true,
                 "language": {
                     "url": "assets/vendor/Indonesia.json"
