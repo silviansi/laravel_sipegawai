@@ -1,11 +1,11 @@
 @extends('layouts.base')
-@section('title', 'Bagian')
+@section('title', 'Divisi')
 @section('content')
 
 <!-- Button trigger modal -->
 <div class="col-md-3 mx-5 mt-4 mb-2">
     <a href=""
-        data-bs-toggle="modal" data-bs-target="#ModalTambah" class="btn btn-success btn-md">+ Tambah Data Bagian
+        data-bs-toggle="modal" data-bs-target="#ModalTambah" class="btn btn-success btn-md">+ Tambah Divisi
     </a>
 </div>
 
@@ -24,17 +24,17 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Nama Bagian</th>
-                    <th>Aksi</th>
+                    <th class="text-center">Divisi</th>
+                    <th class="text-center">Aksi</th>
                 </tr>
             </thead>
              
             <tbody>
                 @foreach($bagians as $bagian)
                 <tr id="row-{{ $bagian->id }}">
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $bagian->nama_bagian }}</td>
-                    <td>
+                    <td class="text-center">{{ $loop->iteration }}</td>
+                    <td class="text-center">{{ $bagian->nama_bagian }}</td>
+                    <td class="text-center">
                         <a href="{{ route('bagian.edit', $bagian->id) }}"
                             class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#ModalEdit{{ $bagian->id }}">
                             <i class="bi bi-pencil-fill"></i>
@@ -58,6 +58,11 @@
         // DataTable Versi Indonesia
         $(document).ready(function() {
             $('#table-bagian').DataTable( {
+                "columnDefs": [
+                    { "width": "5%", "targets": 0 },  
+                    { "width": "45%", "targets": 1 },  
+                    { "width": "45%", "targets": 2 }  
+                ],
                 responsive: true,
                 "language": {
                     "url": "assets/vendor/Indonesia.json"

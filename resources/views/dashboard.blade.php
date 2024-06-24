@@ -37,7 +37,7 @@
         <div class="col-12 col-md-6 text-center">
             <div class="card">
                 <div class="card-header border-0">
-                    <h5 class="card-title">Jumlah Pegawai Setiap Bagian</h5>
+                    <h5 class="card-title">Jumlah Pegawai di Setiap Divisi</h5>
                 </div>
                 <div class="card-body">
                     <canvas id="bagianPegawai"></canvas>
@@ -47,7 +47,7 @@
         <div class="col-12 col-md-6 text-center">
             <div class="card">
                 <div class="card-header border-0">
-                    <h5 class="card-title">Jumlah Pegawai Setiap Status</h5>
+                    <h5 class="card-title">Jumlah Pegawai di Setiap Status</h5>
                 </div>
                 <div class="card-body">
                     <canvas id="statusPegawai"></canvas>

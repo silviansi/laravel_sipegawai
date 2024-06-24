@@ -3,7 +3,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Edit Data Bagian</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Edit Divisi</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -11,7 +11,7 @@
             @csrf
             @method('PUT')
             <div class="col-md-12">
-              <label for="nama_bagian" class="form-label">Nama Bagian</label>
+              <label for="nama_bagian" class="form-label">Divisi</label>
                 <input type="text" class="form-control" id="nama_bagian" name="nama_bagian" value="{{ $bagian->nama_bagian }}">
             </div>
             <div class="modal-footer">

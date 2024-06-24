@@ -52,7 +52,7 @@
             <input type="text" class="form-control" id="alamat" name="alamat" value="{{ $pegawai->alamat }}">
           </div>
           <div class="col-md-12">
-            <label for="bagian_id" class="form-label">Bagian</label>
+            <label for="bagian_id" class="form-label">Divisi</label>
             <select id="bagian_id" class="form-select" name="bagian_id">
               <option value="{{ $pegawai->bagian->id }}" selected>{{ $pegawai->bagian->nama_bagian }}</option>
               @foreach ($bagians as $bagian)

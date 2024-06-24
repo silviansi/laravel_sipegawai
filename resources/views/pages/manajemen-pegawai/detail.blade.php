@@ -12,7 +12,7 @@
                         <label for="nama" class="form-label">Nama Lengkap</label>
                         <input type="text" class="form-control" id="nama" name="nama" value="{{ $pegawai->nama }}" readonly>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <label for="nip" class="form-label">NIP</label>
                         <input type="text" class="form-control" id="nip" name="nip" value="{{ $pegawai->nip }}" readonly>
                     </div>
@@ -41,7 +41,7 @@
                         <input type="text" class="form-control" id="alamat" name="alamat" value="{{ $pegawai->alamat }}" readonly>
                     </div>
                     <div class="col-md-4">
-                        <label for="bagian" class="form-label">Bagian</label>
+                        <label for="bagian" class="form-label">Divisi</label>
                         <input type="text" class="form-control" id="bagian" name="bagian" value="{{ $pegawai->bagian->nama_bagian }}" readonly>
                     </div>
                     <div class="col-md-4">

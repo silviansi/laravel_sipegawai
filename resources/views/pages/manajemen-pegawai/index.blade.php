@@ -25,9 +25,9 @@
                 <tr>
                     <th>No.</th>
                     <th>Nama</th>
-                    <th>Bagian</th>
+                    <th>Divisi</th>
                     <th>Jabatan</th>
-                    <th>NIP</th>
+                    <th>No. HP</th>
                     <th>Status</th>
                     <th>Aksi</th>
                 </tr>
@@ -36,11 +36,11 @@
             <tbody>
                 @foreach ($pegawais as $pegawai)
                 <tr id="row-{{ $pegawai->id }}">
-                    <td>{{ $loop->iteration }}</td>
+                    <td class="text-center">{{ $loop->iteration }}</td>
                     <td>{{ $pegawai->nama }}</td>
                     <td>{{ $pegawai->bagian->nama_bagian }}</td>
                     <td>{{ $pegawai->jabatan->nama_jabatan }}</td>
-                    <td>{{ $pegawai->nip }}</td>
+                    <td>{{ $pegawai->no_telp }}</td>
                     <td>{{ $pegawai->status->nama_status }}</td>
                     <td>
                         <a href="{{ route('pegawai.detail', $pegawai->id) }}"
