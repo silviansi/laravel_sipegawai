@@ -34,7 +34,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-md-6 text-center">
             <div class="card">
                 <div class="card-header border-0">
                     <h5 class="card-title">Jumlah Pegawai Setiap Bagian</h5>
@@ -44,7 +44,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-md-6 text-center">
             <div class="card">
                 <div class="card-header border-0">
                     <h5 class="card-title">Jumlah Pegawai Setiap Status</h5>
